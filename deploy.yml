@@ -1,0 +1,20 @@
+---
+- hosts: all
+  remote_user: root
+  vars:
+    compose_directory: /data/supersam.minetest.ch
+  tasks:
+    - name: Checkout git
+      ansible.builtin.git:
+        repo: https://github.com/BuckarooBanzay/supersam.minetest.ch
+        dest: "{{ compose_directory }}"
+        single_branch: yes
+        force: yes
+        version: main
+
+    - name: Create and start services
+      community.general.docker_compose:
+        project_src: "{{ compose_directory }}"
+        pull: yes
+        build: yes
+        remove_orphans: yes

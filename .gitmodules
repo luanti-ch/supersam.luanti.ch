@@ -1,0 +1,6 @@
+[submodule "super_sam"]
+	path = game
+	url = https://github.com/BuckarooBanzay/super_sam/
+[submodule "worldmods/monitoring"]
+	path = worldmods/monitoring
+	url = https://github.com/minetest-monitoring/monitoring
