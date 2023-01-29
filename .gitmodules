@@ -7,3 +7,6 @@
 [submodule "worldmods/otp"]
 	path = worldmods/otp
 	url = https://github.com/mt-mods/otp
+[submodule "worldmods/xban2"]
+	path = worldmods/xban2
+	url = https://github.com/minetest-mods/xban2
