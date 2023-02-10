@@ -10,3 +10,6 @@
 [submodule "worldmods/xban2"]
 	path = worldmods/xban2
 	url = https://github.com/minetest-mods/xban2
+[submodule "worldmods/mtui_mod"]
+	path = worldmods/mtui_mod
+	url = https://github.com/minetest-go/mtui_mod

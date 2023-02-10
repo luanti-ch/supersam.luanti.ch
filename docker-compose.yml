@@ -18,6 +18,36 @@ services:
    - default
   entrypoint: ["minetestserver", "--config", "/minetest.conf"]
 
+ matterbridge:
+   image: 42wim/matterbridge:1.26.0
+   dns:
+    - 8.8.4.4
+    - 8.8.8.8
+   volumes:
+    - ./matterbridge.toml:/etc/matterbridge/matterbridge.toml
+    - ./remotenickformat.tengo:/remotenickformat.tengo
+
+ supersam-lab-ui:
+  image: ghcr.io/minetest-go/mtui:1.22
+  networks:
+   - terminator
+   - default
+  environment:
+   COOKIE_DOMAIN: "supersam.minetest.ch"
+   COOKIE_SECURE: "true"
+   WORLD_DIR: "/root/.minetest/worlds/world"
+   API_KEY: "{{mtui_key}}"
+   ENABLE_FEATURES: "shell,luashell,monitoring"
+  volumes:
+   - "./data/world:/root/.minetest/worlds/world"
+  labels:
+    - "traefik.enable=true"
+    - "traefik.docker.network=terminator"
+    - "traefik.http.routers.supersam.rule=Host(`supersam.minetest.ch`)"
+    - "traefik.http.services.supersam.loadbalancer.server.port=8080"
+    - "traefik.http.routers.supersam.entrypoints=websecure"
+    - "traefik.http.routers.supersam.tls.certresolver=default"
+
 networks:
  terminator:
   external: true

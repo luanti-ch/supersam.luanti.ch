@@ -1,0 +1,37 @@
+[irc]
+[irc.Libera]
+Server="irc.libera.chat:6667"
+Nick="supersam"
+Password="{{irc_password}}"
+RemoteNickFormat="{TENGO}"
+ColorNicks=true
+
+#[discord]
+#[discord.Discord]
+#Token="{{discord_token}}"
+#Server="908019153212964904"
+#RemoteNickFormat="{TENGO}"
+#UseUserName=true
+#AllowMention=["users"]
+
+[api.minetest]
+BindAddress="0.0.0.0:4242"
+Token="{{matterbridge_token}}"
+Buffer=1000
+RemoteNickFormat="[{BRIDGE}] {NICK}"
+
+[tengo]
+RemoteNickFormat="/remotenickformat.tengo"
+
+[[gateway]]
+name="main"
+enable=true
+[[gateway.inout]]
+account="irc.Libera"
+channel="#supersam"
+#[[gateway.inout]]
+#account = "discord.Discord"
+#channel="ingame"
+[[gateway.inout]]
+account="api.minetest"
+channel="api"
