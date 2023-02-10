@@ -6,13 +6,13 @@ Password="{{irc_password}}"
 RemoteNickFormat="{TENGO}"
 ColorNicks=true
 
-#[discord]
-#[discord.Discord]
-#Token="{{discord_token}}"
-#Server="908019153212964904"
-#RemoteNickFormat="{TENGO}"
-#UseUserName=true
-#AllowMention=["users"]
+[discord]
+[discord.Discord]
+Token="{{discord_token}}"
+Server="1073673396774244444"
+RemoteNickFormat="{TENGO}"
+UseUserName=true
+AllowMention=["users"]
 
 [api.minetest]
 BindAddress="0.0.0.0:4242"
@@ -29,9 +29,9 @@ enable=true
 [[gateway.inout]]
 account="irc.Libera"
 channel="#supersam"
-#[[gateway.inout]]
-#account = "discord.Discord"
-#channel="ingame"
+[[gateway.inout]]
+account = "discord.Discord"
+channel="ingame"
 [[gateway.inout]]
 account="api.minetest"
 channel="api"
