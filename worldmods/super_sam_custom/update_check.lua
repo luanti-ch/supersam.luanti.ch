@@ -1,6 +1,6 @@
 
 local function get_version()
-    local f = assert(io.open(minetest.get_worldpath() .. "/gitversion", "r"))
+    local f = assert(io.open(minetest.get_worldpath() .. "/git_info/refs/heads/main", "r"))
     local version = f:read("*all")
     f:close()
     return version

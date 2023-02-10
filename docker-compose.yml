@@ -8,7 +8,7 @@ services:
   volumes:
    - "./data/world:/root/.minetest/worlds/world"
    - "./game:/root/.minetest/worlds/world/game"
-   - "./.git/refs/heads/main:/root/.minetest/worlds/world/gitversion:ro"
+   - "./.git:/root/.minetest/worlds/world/git_info:ro"
    - "./world.mt:/root/.minetest/worlds/world/world.mt"
    - "./worldmods:/root/.minetest/worlds/world/worldmods"
    - "./minetest.conf:/minetest.conf"
