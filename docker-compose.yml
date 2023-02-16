@@ -29,7 +29,7 @@ services:
     - ./remotenickformat.tengo:/remotenickformat.tengo
 
  supersam-lab-ui:
-  image: ghcr.io/minetest-go/mtui:1.22
+  image: ghcr.io/minetest-go/mtui:1.23
   networks:
    - terminator
    - default
@@ -38,7 +38,7 @@ services:
    COOKIE_SECURE: "true"
    WORLD_DIR: "/root/.minetest/worlds/world"
    API_KEY: "{{mtui_key}}"
-   ENABLE_FEATURES: "shell,luashell,monitoring"
+   ENABLE_FEATURES: "shell,luashell,monitoring,xban"
   volumes:
    - "./data/world:/root/.minetest/worlds/world"
   labels:
