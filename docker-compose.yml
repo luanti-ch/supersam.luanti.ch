@@ -12,6 +12,8 @@ services:
    - "./world.mt:/root/.minetest/worlds/world/world.mt"
    - "./worldmods:/root/.minetest/worlds/world/worldmods"
    - "./minetest.conf:/minetest.conf"
+  labels:
+   - "promtail=true"
   ports:
     - "30002:30002/udp"
   networks:
@@ -24,6 +26,8 @@ services:
    dns:
     - 8.8.4.4
     - 8.8.8.8
+   labels:
+    - "promtail=true"
    volumes:
     - ./matterbridge.toml:/etc/matterbridge/matterbridge.toml
     - ./remotenickformat.tengo:/remotenickformat.tengo
@@ -36,12 +40,14 @@ services:
   environment:
    COOKIE_DOMAIN: "supersam.minetest.ch"
    COOKIE_SECURE: "true"
+   LOGLEVEL: debug
    WORLD_DIR: "/root/.minetest/worlds/world"
    API_KEY: "{{mtui_key}}"
    ENABLE_FEATURES: "shell,luashell,monitoring,xban"
   volumes:
    - "./data/world:/root/.minetest/worlds/world"
   labels:
+    - "promtail=true"
     - "traefik.enable=true"
     - "traefik.docker.network=terminator"
     - "traefik.http.routers.supersam.rule=Host(`supersam.minetest.ch`)"
