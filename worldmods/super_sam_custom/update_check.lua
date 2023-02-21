@@ -2,6 +2,7 @@
 local function get_version()
     local f = assert(io.open(minetest.get_worldpath() .. "/git_info/refs/heads/main", "r"))
     local version = f:read("*all")
+    version = version:gsub("\n", "")
     f:close()
     return version
 end
