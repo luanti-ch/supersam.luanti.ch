@@ -16,3 +16,6 @@
 [submodule "worldmods/beerchat"]
 	path = worldmods/beerchat
 	url = https://github.com/mt-mods/beerchat
+[submodule "worldmods/announce"]
+	path = worldmods/announce
+	url = https://github.com/mt-mods/announce
