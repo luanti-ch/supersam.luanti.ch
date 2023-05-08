@@ -7,16 +7,9 @@ local function get_version()
     return version
 end
 
--- generic chat message
-local function chat_msg(msg)
-    minetest.chat_send_all(msg)
-end
-
 -- beerchat message
-if minetest.get_modpath("beerchat") then
-    chat_msg = function(msg)
-        beerchat.on_channel_message("main", "SYSTEM", msg)
-    end
+local function chat_msg(msg)
+    beerchat.on_channel_message("main", "SYSTEM", msg)
 end
 
 local start_version = get_version()
