@@ -7,6 +7,6 @@ super_sam.on_event("level_finished", function(player, highscore_name, score, ran
     chat_msg("➢ Player '" .. player:get_player_name() ..
         "' finished level '" .. highscore_name ..
         "' with " .. score ..
-        " points and rank " .. rank
+        " points and rank " .. (rank and rank or "<none>")
     )
 end)
