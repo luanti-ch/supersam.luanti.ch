@@ -10,5 +10,5 @@ read_globals = {
 	"VoxelArea", "AreaStore",
 
 	-- mods
-	"super_sam", "beerchat"
+	"super_sam", "super_sam_level", "beerchat"
 }
