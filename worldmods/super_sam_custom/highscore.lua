@@ -18,7 +18,7 @@ super_sam_highscore.set_level_highscore = function(levelname, highscore)
         elseif i == 2 then
             icon = ":second_place:"
         elseif i == 3 then
-            icon = ":third_place"
+            icon = ":third_place:"
         elseif i == 10 then
             icon = ":poop:"
         end
