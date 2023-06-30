@@ -6,6 +6,7 @@ dofile(MP .. "/level.lua")
 
 local http = minetest.request_http_api()
 loadfile(MP.."/highscore.lua")(http)
+loadfile(MP.."/player-events.lua")(http)
 
 -- disabled, not very usable
 -- dofile(MP .. "/anticheat.lua")

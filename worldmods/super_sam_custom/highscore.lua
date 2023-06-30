@@ -1,12 +1,11 @@
 local http = ...
 
-local old_set_level_highscore = super_sam_highscore.set_level_highscore
 local url = minetest.settings:get("discord_highscore_url")
-
 if not url or url == "" then
     return
 end
 
+local old_set_level_highscore = super_sam_highscore.set_level_highscore
 super_sam_highscore.set_level_highscore = function(levelname, highscore)
     local content = ""
     content = content .. "## Highscore for level _" .. levelname .. "_\n"
