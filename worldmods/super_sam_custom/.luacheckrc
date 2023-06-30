@@ -1,4 +1,8 @@
 
+globals = {
+	"super_sam_highscore"
+}
+
 read_globals = {
 	-- Stdlib
 	string = {fields = {"split", "trim"}},
