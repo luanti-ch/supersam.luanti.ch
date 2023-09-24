@@ -6,7 +6,7 @@ if not url or url == "" then
 end
 
 local old_set_level_highscore = super_sam_highscore.set_level_highscore
-super_sam_highscore.set_level_highscore = function(levelname, highscore)
+super_sam_highscore.set_level_highscore = function(levelname, highscore, playername, score)
     local content = ""
     content = content .. "## Highscore for level _" .. levelname .. "_\n"
 
@@ -22,10 +22,17 @@ super_sam_highscore.set_level_highscore = function(levelname, highscore)
             icon = ":poop:"
         end
 
+        local suffix = ""
+        if entry.name == playername and entry.score == score then
+            -- mark new entry
+            suffix = " :new:"
+        end
+
         content = content .. "* " .. icon ..
             " $ **" .. entry.score .. "**" ..
             " `" .. entry. name .. "`" ..
             " (" .. os.date('%Y-%m-%d', entry.timestamp) .. ")" ..
+            suffix ..
             "\n"
     end
 
