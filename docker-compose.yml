@@ -33,7 +33,7 @@ services:
     - ./remotenickformat.tengo:/remotenickformat.tengo
 
  supersam-lab-ui:
-  image: ghcr.io/minetest-go/mtui:1.62
+  image: ghcr.io/minetest-go/mtui:1.63
   networks:
    - terminator
    - default
