@@ -2,7 +2,7 @@ version: "2"
 
 services:
  minetest:
-  image: ghcr.io/minetest-hosting/minetest-docker:5.8.0
+  image: ghcr.io/minetest/minetest:5.10.0
   restart: always
   user: root
   volumes:
@@ -19,7 +19,7 @@ services:
   networks:
    - terminator
    - default
-  entrypoint: ["minetestserver", "--config", "/minetest.conf"]
+  command: ["--config", "/minetest.conf"]
 
  matterbridge:
    image: 42wim/matterbridge:1.26.0
@@ -33,12 +33,12 @@ services:
     - ./remotenickformat.tengo:/remotenickformat.tengo
 
  supersam-lab-ui:
-  image: ghcr.io/minetest-go/mtui:v1.77
+  image: ghcr.io/minetest-go/mtui:v1.78
   networks:
    - terminator
    - default
   environment:
-   COOKIE_DOMAIN: "supersam.minetest.ch"
+   COOKIE_DOMAIN: "supersam.luanti.ch"
    COOKIE_SECURE: "true"
    LOGLEVEL: debug
    WORLD_DIR: "/root/.minetest/worlds/world"
@@ -56,10 +56,26 @@ services:
     - "promtail=true"
     - "traefik.enable=true"
     - "traefik.docker.network=terminator"
-    - "traefik.http.routers.supersam.rule=Host(`supersam.minetest.ch`)"
-    - "traefik.http.services.supersam.loadbalancer.server.port=8080"
-    - "traefik.http.routers.supersam.entrypoints=websecure"
-    - "traefik.http.routers.supersam.tls.certresolver=default"
+    - "traefik.http.routers.supersam-luanti-ch.rule=Host(`supersam.luanti.ch`)"
+    - "traefik.http.services.supersam-luanti-ch.loadbalancer.server.port=8080"
+    - "traefik.http.routers.supersam-luanti-ch.entrypoints=websecure"
+    - "traefik.http.routers.supersam-luanti-ch.tls.certresolver=default"
+
+ redirect:
+  image: nginx:1.25.2
+  networks:
+   - terminator
+   - default
+  restart: always
+  labels:
+    - "traefik.enable=true"
+    - "traefik.docker.network=terminator"
+    - "traefik.http.routers.supersam-minetest-ch.rule=Host(`supersam.minetest.ch`)"
+    - "traefik.http.services.supersam-minetest-ch.loadbalancer.server.port=80"
+    - "traefik.http.routers.supersam-minetest-ch.entrypoints=websecure"
+    - "traefik.http.routers.supersam-minetest-ch.tls.certresolver=default"
+  volumes:
+   - "./redirect.conf:/etc/nginx/conf.d/default.conf:ro"
 
 networks:
  terminator:
