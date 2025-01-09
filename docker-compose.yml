@@ -7,10 +7,7 @@ services:
   user: root
   volumes:
    - "./data/world:/root/.minetest/worlds/world"
-   - "./game:/root/.minetest/worlds/world/game"
-   - "./.git:/root/.minetest/worlds/world/git_info:ro"
    - "./world.mt:/root/.minetest/worlds/world/world.mt"
-   - "./worldmods:/root/.minetest/worlds/world/worldmods"
    - "./minetest.conf:/minetest.conf"
   labels:
    - "promtail=true"
@@ -43,14 +40,12 @@ services:
    LOGLEVEL: debug
    WORLD_DIR: "/root/.minetest/worlds/world"
    API_KEY: "{{mtui_key}}"
-   ENABLE_FEATURES: "shell,luashell,monitoring,xban"
+   ENABLE_FEATURES: "shell,luashell,monitoring,xban,modmanagement"
    SERVER_NAME: "Super sam"
    MINETEST_CONFIG: "/minetest.conf"
   volumes:
    - "./data/world:/root/.minetest/worlds/world"
-   - "./game:/root/.minetest/worlds/world/game"
    - "./world.mt:/root/.minetest/worlds/world/world.mt"
-   - "./worldmods:/root/.minetest/worlds/world/worldmods"
    - "./minetest.conf:/minetest.conf"
   labels:
     - "promtail=true"
