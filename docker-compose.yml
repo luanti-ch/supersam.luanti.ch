@@ -27,7 +27,7 @@ services:
     - ./remotenickformat.tengo:/remotenickformat.tengo
 
  supersam-lab-ui:
-  image: ghcr.io/minetest-go/mtui:v1.84
+  image: ghcr.io/minetest-go/mtui:v1.85
   restart: always
   networks:
    - terminator
@@ -41,6 +41,7 @@ services:
    ENABLE_FEATURES: "shell,luashell,monitoring,xban,modmanagement"
    SERVER_NAME: "Super sam"
    MINETEST_CONFIG: "/minetest.conf"
+   TAIL_ENGINE_LOGFILE: "/root/.minetest/debug.txt"
   volumes:
    - "./data/world:/root/.minetest/worlds/world"
    - "./world.mt:/root/.minetest/worlds/world/world.mt"
