@@ -14,7 +14,7 @@ services:
   networks:
    - terminator
    - default
-  command: ["--config", "/minetest.conf"]
+  command: ["--config", "/minetest.conf", "--logfile", "/root/.minetest/worlds/world/debug.txt"]
 
  matterbridge:
    image: 42wim/matterbridge:1.26.0
@@ -41,7 +41,7 @@ services:
    ENABLE_FEATURES: "shell,luashell,monitoring,xban,modmanagement"
    SERVER_NAME: "Super sam"
    MINETEST_CONFIG: "/minetest.conf"
-   TAIL_ENGINE_LOGFILE: "/root/.minetest/debug.txt"
+   TAIL_ENGINE_LOGFILE: "/root/.minetest/worlds/world/debug.txt"
   volumes:
    - "./data/world:/root/.minetest/worlds/world"
    - "./world.mt:/root/.minetest/worlds/world/world.mt"
