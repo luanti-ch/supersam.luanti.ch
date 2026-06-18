@@ -55,7 +55,7 @@ services:
     - "traefik.http.routers.supersam-luanti-ch.tls.certresolver=default"
 
  redirect:
-  image: nginx:1.31.1
+  image: nginx:1.31.2
   networks:
    - terminator
    - default
